@@ -1,3 +1,29 @@
 .mySvg {
-  background-color: #000000;
+  min-height: 800px;
+  background-color: #ffffff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #fff;
+}
+
+.bar {
+  fill: #3044g5;
+}
+
+.bar:hover {
+  fill: #d81305;
+}
+
+svg text.label {
+  fill: white;
+  font: 15px;
+  font-weight: 400;
+  text-anchor: middle;
+}
+
+
+#barGraphID {
+  min-width: 600px;
 }
