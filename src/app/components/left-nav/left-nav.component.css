@@ -1,0 +1,20 @@
+.sideNav {
+  color: #ffffff;
+  background: #2E8CC8;
+  width: 20%;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  padding: 4px 8px; }
+  .sideNav button {
+    background: #3A9ED2;
+    color: #7BD6FF;
+    border: none;
+    text-align: left; }
+    .sideNav button a {
+      color: #ffffff; }
+    .sideNav button:hover {
+      background: #3899D0;
+      text-decoration: none; }
+
+/*# sourceMappingURL=left-nav.component.css.map */

@@ -14,8 +14,6 @@ export class BarGraphStageComponent implements OnInit {
   ) { }
 
 
-
-
   ngOnInit(){}
   //ngOnChange (){}
 

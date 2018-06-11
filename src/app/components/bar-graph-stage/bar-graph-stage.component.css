@@ -1,29 +1,24 @@
 .mySvg {
   min-height: 800px;
-  background-color: #ffffff;
-}
+  background-color: #ffffff; }
 
 .axis path, .axis line {
   fill: none;
-  stroke: #fff;
-}
+  stroke: #fff; }
 
 .bar {
-  fill: #3044g5;
-}
+  fill: #3044b5; }
 
 .bar:hover {
-  fill: #d81305;
-}
+  fill: #d81305; }
 
 svg text.label {
   fill: white;
   font: 15px;
   font-weight: 400;
-  text-anchor: middle;
-}
-
+  text-anchor: middle; }
 
 #barGraphID {
-  min-width: 600px;
-}
+  min-width: 600px; }
+
+/*# sourceMappingURL=bar-graph-stage.component.css.map */
