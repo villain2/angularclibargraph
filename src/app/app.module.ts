@@ -8,6 +8,7 @@ import { SidebarControlsComponent } from './components/sidebar-controls/sidebar-
 import { BarGraphStageComponent } from './components/bar-graph-stage/bar-graph-stage.component';
 import { LeftNavComponent } from './components/left-nav/left-nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
