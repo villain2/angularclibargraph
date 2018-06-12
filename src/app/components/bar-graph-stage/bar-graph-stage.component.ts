@@ -9,12 +9,30 @@ import * as d3 from 'd3';
 export class BarGraphStageComponent implements OnInit {
   @ViewChild('containerD3') d3Container: ElementRef;
 
+  hostElement: any;
+  svg: any;
+  htmlElement: HTMLElement;
+
   constructor(
     private elRef: ElementRef
   ) { }
 
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.createGraph();
+  }
+
+  createGraph = () => {
+    this.hostElement  = this.d3Container.nativeElement;
+    console.log('host element');
+    console.log(this.hostElement);
+
+    this.svg = d3.select(this.hostElement).append('svg')
+      .attr('viewBox', '0,0 ' + this.hostElement.offsetWidth + ',' + this.hostElement.offsetHeight)
+      .append('g')
+      .attr('transform', `translate(${this.hostElement.offsetWidth / 2}, ${this.hostElement.offsetHeight / 2})`);
+
+  }
   //ngOnChange (){}
 
 
