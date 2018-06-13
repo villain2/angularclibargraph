@@ -1,4 +1,6 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef, Input } from '@angular/core';
+import { BarGraphData } from '../../core/bar-graph-data';
+import { BARDATA } from '../../core/bar-graph-default';
 import * as d3 from 'd3';
 
 @Component({
@@ -12,6 +14,8 @@ export class BarGraphStageComponent implements OnInit {
   hostElement: any;
   svg: any;
   htmlElement: HTMLElement;
+  barData     = BARDATA;
+  barGraphData: BarGraphData;
 
   constructor(
     private elRef: ElementRef
@@ -20,12 +24,15 @@ export class BarGraphStageComponent implements OnInit {
 
   ngOnInit(){
     this.createGraph();
+    this.createDot();
   }
 
   createGraph = () => {
     this.hostElement  = this.d3Container.nativeElement;
     console.log('host element');
     console.log(this.hostElement);
+    console.log('bar data');
+    console.log(this.barData);
 
     this.svg = d3.select(this.hostElement).append('svg')
       .attr('viewBox', '0,0 ' + this.hostElement.offsetWidth + ',' + this.hostElement.offsetHeight)
@@ -33,6 +40,14 @@ export class BarGraphStageComponent implements OnInit {
       .attr('transform', `translate(${this.hostElement.offsetWidth / 2}, ${this.hostElement.offsetHeight / 2})`);
 
   }
+
+  createDot = () => {
+    this.svg.append("circle")
+      .attr('cx', 10)
+      .attr('cy', 10)
+      .attr('r', 50);
+  }
+
   //ngOnChange (){}
 
 
