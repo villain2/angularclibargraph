@@ -11,6 +11,7 @@ export class BarGraphStageComponent implements OnInit {
 
   hostElement: any;
   svg: any;
+  circle: any;
   htmlElement: HTMLElement;
 
   constructor(
@@ -28,12 +29,18 @@ export class BarGraphStageComponent implements OnInit {
     console.log(this.hostElement);
 
     this.svg = d3.select(this.hostElement).append('svg')
+      .attr('id', 'barGraph')
       .attr('viewBox', '0,0 ' + this.hostElement.offsetWidth + ',' + this.hostElement.offsetHeight)
       .append('g')
       .attr('transform', `translate(${this.hostElement.offsetWidth / 2}, ${this.hostElement.offsetHeight / 2})`);
+    
+    this.circle   = this.svg.append('circle')
+      .attr('cx', 30)
+      .attr('cy', 30)
+      .attr('r', 20);
 
   }
-  //ngOnChange (){}
+  // ngOnChange (){}
 
 
 
