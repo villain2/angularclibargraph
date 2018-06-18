@@ -25,11 +25,15 @@ export class BarGraphStageComponent implements OnInit {
 
   ngOnInit(){
     this.createGraph();
-    this.createDot();
+    //this.createDot();
   }
 
   createGraph = () => {
     this.hostElement  = this.d3Container.nativeElement;
+    let margin = {top: 5, right: 20, bottom: 30, left: 0};
+    let width  = 400 - margin.left - margin.right;
+    let height = 400 - margin.top - margin.bottom;
+
     console.log('host element');
     console.log(this.hostElement);
     console.log('bar data');
@@ -37,14 +41,41 @@ export class BarGraphStageComponent implements OnInit {
 
     this.svg = d3.select(this.hostElement).append('svg')
       .attr('id', 'barGraph')
+      //.attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
       .attr('viewBox', '0,0 ' + this.hostElement.offsetWidth + ',' + this.hostElement.offsetHeight)
       .append('g')
       .attr('transform', `translate(${this.hostElement.offsetWidth / 2}, ${this.hostElement.offsetHeight / 2})`);
 
-    this.circle   = this.svg.append('circle')
-      .attr('cx', 30)
-      .attr('cy', 30)
-      .attr('r', 20);
+    let chart = this.svg.append('g')
+      .attr('class', 'bar')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    let xDomain = this.barData.map(d => d.color);
+    let yDomain = [0, d3.max(this.barData, d => d.answerValue)];
+
+    //scale for data domain
+    let x = d3.scaleBand()
+      .domain(xDomain)
+      .rangeRound([0,width])
+      .padding(0.2);
+
+    let y = d3.scaleLinear()
+      .domain(yDomain)
+      .range([height, 0]);
+
+    //add the x Axis
+    this.svg.append('g')
+      .attr('class', 'x axis')
+      .attr('width', '100%')
+      .attr('transform', `translate(${margin.left},${margin.top + height - 300})`)
+      .call(d3.axisBottom(x));
+
+    this.svg.append('g')
+      .attr('class', 'y axis')
+      .attr('transform', `translate(0,0)`)
+      .call(d3.axisLeft(y));
+
 
   }
 
