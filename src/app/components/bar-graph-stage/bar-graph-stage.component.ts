@@ -51,7 +51,7 @@ export class BarGraphStageComponent implements OnInit {
       .attr('class', 'bar')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    let xDomain = this.barData.map(d => d.color);
+    let xDomain = this.barData.map(d => d.id);
     let yDomain = [0, d3.max(this.barData, d => d.answerValue)];
 
     //scale for data domain
@@ -73,7 +73,7 @@ export class BarGraphStageComponent implements OnInit {
 
     this.svg.append('g')
       .attr('class', 'y axis')
-      .attr('transform', `translate(0,0)`)
+      .attr('transform', `translate(${margin.left},${margin.top}`)
       .call(d3.axisLeft(y));
 
 
